@@ -6,7 +6,7 @@ if not os.path.exists('.git'):
     os.system('git init')
 
 start_date = datetime(2024, 2, 12)
-end_date = datetime(2024, 2, 15)
+end_date = datetime(2024, 4, 14)
 
 current_date = start_date
 while current_date <= end_date:
@@ -21,9 +21,9 @@ while current_date <= end_date:
             os.system(f'git commit --date="{commit_date_str}" -m "commit"')
     current_date += timedelta(days=1)
 
-if os.system('git remote -v') == 0:
-    push_status = os.system('git push -u origin main')
-    if push_status != 0:
-        print("Error: Failed to push changes to the remote repository.")
-else:
-    print("Error: Remote repository is not configured.")
+# Add the remote repository URL
+repository_url = "https://github.com/Mr-Sudarshan-Patil/newpy.git"
+os.system(f'git remote add origin {repository_url}')
+
+# Push changes to the remote repository
+os.system('git push -u origin main')
